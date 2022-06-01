@@ -3,8 +3,18 @@ const puppeteer = require('puppeteer');
 const app = express()
 const path = require("path");
 
+app.use(express.static(path.join(__dirname, "public")));
 
+app.set('view engine', 'ejs')
 
+app.get('/', function (req, res) {
+    res.json({name:'Gabriel'})
+    });
+ 
+
+app.listen(3001, function(){
+    console.log('conexão de porta')
+})
 
 /// scroll para pegar mais requisições , pupeetieer !!
 async function autoScroll(page){
@@ -58,11 +68,16 @@ async function goToNextPage(page){
       
     });
     
-    
-  await page.goto(`https://www.google.com.br/maps/search/vidraçaria`);
+    const search = ''
+  await page.goto(`https://www.google.com.br/maps/search/${search}`);
   
   
   let places = [];
+  app.get('/home', function (req, res){
+    res.render( '../views/home', {
+        places
+    } )
+})
   do{
     
   await autoScroll(page);
@@ -73,5 +88,6 @@ async function goToNextPage(page){
   console.log(places); 
 } while(true)
 
-})();
 
+
+})();

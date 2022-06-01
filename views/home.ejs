@@ -54,15 +54,18 @@
       <div class="div"> 
         <table class="table" style="width:50%"  >
           <tr>
-            <% places.forEach(function(d){ %>
-                <td class="fone"><%= d.places %></td>
-              </tr>
-                <% }) %>
+            <td class="list" style="width:25%">Nome</td>
+            <td class="list" style="width:25%">Telefone</td>
           </tr>
         </br>
       </br>
     </br>
-       
+          <tr>
+          <% places.forEach(function(d){ %>
+              <td class="fone"><%= d.places %></td>
+            </tr>
+              <% }) %>
+          </table>
       </div>
     
     </main>
