@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="/css/index.css" rel="stylesheet" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    
+  </head>
+  <script>
+    function changeParameter(){
+      var searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("search", document.getElementById('searchField').value);
+      window.location.search = searchParams.toString();
+      document.getElementById('spinnerBackground').style.visibility = 'visible'
+      document.getElementById('spinner').style.visibility = 'visible'
+    }
+
+    /* function changeNextPage(){
+      var newPage = (window.location.goToNextPage);
+      newPage.set( document.getElementById('button[aria-label="Próxima página"]').click());
+
+     console.log(  window.location.goToNextPage); */
+/*       window.location.next = nextParams.toString();
+ */    
+    
+  </script>
+
+  <body class="container">
+    <header></header>
+
+    <main>
+
+      <div class="jumbotron">
+
+        <img class="image" src="https://www.1pay.com.br/wp-content/uploads/azul-1-e1615388308831.png">
+        <h1 class="title">Web Scraping</h1>
+        <h2 class="subtitle">Raspagem de Dados do Google Maps</h2>
+        <h5 class="paragrafo">Faça sua Pesquisa Aqui !</h5>
+      </div>
+<div class="button">
+  <label for="name"></label>
+  <input class="textfield" type="text" id="searchField" for="name"  size="30" label="Codigo"  /> </br>
+  <button class="buttonRadius" onclick="changeParameter()" >Buscar</button>
+</div>
+
+<!-- <div class="button">
+  <button class="voltar" onclick="changeNextPage()" > > </button>
+</div> -->
+
+      <div id="spinner" class="spinner"></div>
+      <div id="spinnerBackground" class="spinnerBackground" >
+
+      <div class="div"> 
+        <table class="table" style="width:50%"  >
+          <tr>
+            <% places.forEach(function(d){ %>
+                <td class="fone"><%= d.places %></td>
+              </tr>
+                <% }) %>
+          </tr>
+        </br>
+      </br>
+    </br>
+       
+      </div>
+    
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
