@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" media="(max-width: 800px)" href="example.css" />
-    <link rel="stylesheet" href="sweetalert2.min.css" />
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css" />
     <!-- Styles  -->
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/global.css" />
@@ -23,7 +23,7 @@
 
     <title>Login</title>
   </head>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <body>
     <div class="content" id="home">
       <header>
@@ -47,24 +47,22 @@
               </button>
             </form>
 
-            <script >
-              function alert() {
-                return Swal.fire({
-                  title:"errou",
-                  text:"Gabriel Vieira Reis Maximo",
-                  html:"<p> hola !</p>",
-                  icon: "success"
-                });
-              }
-
+            <script>
               function logar(request, response) {
                 const login = document.getElementById("login").value;
                 const senha = document.getElementById("senha").value;
-                
+
                 if (login === "admin@1pay.com.br" && senha === "Mudar@2022") {
                   window.location.href = "web";
                 } else {
-                  alert();
+                  swal.fire({
+                    title: '<h2 class="text">Erro!</h2>',
+                    html: '<h2 class="text">Senha ou usuário incorreto</h2>',
+                    icon: "error",
+                    width: "30%",
+                    padding: "4rem",
+                    confirmButtonText: '<h2 class="btn-swal"> Ok </h2> ',
+                  });
                 }
               }
             </script>

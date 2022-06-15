@@ -1,10 +1,9 @@
+
 const express = require('express');
 const route = require('./route')
 const puppeteer = require('puppeteer');
 const server = express()
 const path = require("path");
-
-
 
 server.use(route);
 
@@ -14,8 +13,11 @@ server.set("view engine", "ejs");
 
 
 
+
+
 /// scroll para pegar mais requisições , pupeetieer !!
 async function autoScroll(page){
+    
     await page.evaluate(async () => {
         await new Promise((resolve, reject) => {
             var totalHeight = 0;
@@ -61,7 +63,10 @@ async function goToNextPage(page){
 
 
  server.get('/home', function (req, res){
+
+ 
     ;(async function (request, response) {
+
 
     //  if (!!request.places && !!request.places.search) {
     //      const {
@@ -98,3 +103,5 @@ async function goToNextPage(page){
 server.listen(3000, function(){
     console.log('conexão de porta')
 }) 
+
+   
