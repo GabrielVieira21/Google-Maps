@@ -2,11 +2,50 @@
   height: auto;
 }
 
+html{
+  --black:#0d114f;
+  --white:#fafafa;
+  --light-blue:#e0ecff;
+  --blue:#3485ff;
+  --red:#e83f5b;
+  --background: #f6faff;
+  --overlay:#040911;
+  --icons-details:#a5b0c1;
+
+  --grey-dark:#4d5e77;
+  --grey-blue:#a1b2cd;
+  --grey-white:#e5eaf1;
+
+  /* por padrão é  1rem = 16px */
+/* 1rem = 10px , graças ao meu font-size 62.5% , facilita na hora de fazer as contas no elementos */
+}
+/*** create balls ***/
+.ball {
+  width: 21.2rem;
+  height: 21.2rem;
+  background: var(--overlay);
+  clip-path: circle();
+  opacity: 0.1;
+
+  position: fixed;
+}
+
+.ball.top {
+  top: -46rem;
+  width: 63.3rem;
+  right: -35rem;
+  height: 65.3rem;
+}
+
+.ball.bottom {
+  bottom: -15rem;
+  right: 9.6rem;
+}
+
 .image {
   margin-bottom: 40px;
   max-width: 100%;
   min-width: 401px;
-
 }
 .button {
   text-align: center;
@@ -23,7 +62,7 @@
   font-weight: bold;
   background: white;
 }
-.voltar{
+.voltar {
   margin-top: 10px;
   border-radius: 40px;
   border: 1px solid #03045e;
@@ -138,7 +177,6 @@
 .div {
   text-align: center;
   justify-content: center;
-
 }
 
 /* .spinnerBackground {

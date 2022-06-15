@@ -1,20 +1,18 @@
 const express = require('express');
+const route = require('./route')
 const puppeteer = require('puppeteer');
-const app = express()
+const server = express()
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "public")));
 
-app.set('view engine', 'ejs')
 
-app.get('/', function (req, res) {
-    res.json({name:'Gabriel'})
-    });
- 
+server.use(route);
 
-app.listen(3001, function(){
-    console.log('conexão de porta')
-})
+server.set("views", path.join(__dirname, "views"));
+server.use(express.static(path.join(__dirname, "public")));
+server.set("view engine", "ejs");  
+
+
 
 /// scroll para pegar mais requisições , pupeetieer !!
 async function autoScroll(page){
@@ -59,7 +57,18 @@ async function goToNextPage(page){
 
 }
 
-(async function (request, response) {
+
+
+
+ server.get('/home', function (req, res){
+    ;(async function (request, response) {
+
+    //  if (!!request.places && !!request.places.search) {
+    //      const {
+    //        search
+    //      } = request.places;
+    //     }
+    //headless:false - raspagem dos dados 
   const browser = await puppeteer.launch({headless:false});
   const page = await browser.newPage();
   await page.setViewport({
@@ -67,27 +76,25 @@ async function goToNextPage(page){
       height: 900,
       
     });
-    
-    const search = ''
+     const search = '';
   await page.goto(`https://www.google.com.br/maps/search/${search}`);
-  
-  
   let places = [];
-  app.get('/home', function (req, res){
-    res.render( '../views/home', {
-        places
-    } )
-})
+
   do{
+
+      await autoScroll(page);
+      
+      places = await parsePlaces(page);
+      
+      await goToNextPage(page);
+      
+      console.log(places); 
+    } 
+    while(true);
     
-  await autoScroll(page);
-
-  places = await parsePlaces(page);
-
-  await goToNextPage(page);
-  console.log(places); 
-} while(true)
-
-
-
 })();
+ });
+
+server.listen(3000, function(){
+    console.log('conexão de porta')
+}) 
