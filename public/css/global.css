@@ -97,6 +97,7 @@ button.outlined,
    border: .2rem solid  var(--blue);
    background: var(--white);
    color: black;
+   font-weight: bold;
 }
 
 /*** HEADER ****/
