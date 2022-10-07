@@ -11,3 +11,14 @@
 - ejs - ^3.1.8
 - sweetalert2 - ^11.4.17
 - express - ^4.18.1
+
+# Inicializando o Projeto 
+
+### `node index.js`
+
+porta que esta rodando no browser
+http://localhost:3001
+
+### `Dados Login`
+- login : admin@1pay.com.br
+- senha : Mudar@2022
